@@ -10,11 +10,17 @@ class MainPage extends StatelessWidget {
     // print(_data.user);
     return Scaffold(
         appBar: AppBar(
-            title: _data.user != null
-                ? Text('${_data.user.id} page')
-                : Text('no user')
-            //
-            ),
+            // title: _data.user != null
+            //     ? Text('${_data.user.id} page')
+            //     : Text('no user')
+            // //
+            title: (() {
+          if (_data.user != null) {
+            return Text('${_data.user.id} page');
+          } else {
+            return Text('no user');
+          }
+        }())),
         body: Center(
           child: FlatButton(
               onPressed: () {
