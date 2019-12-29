@@ -26,6 +26,7 @@ class AppSub extends StatelessWidget {
     print('App Sub');
     // _data.user = {'id': 'test user', 'pwd': '123123'};
     return MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'app',
         initialRoute: '/main',
         onGenerateRoute: (settings) =>

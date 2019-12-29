@@ -73,11 +73,11 @@ class LoginPage extends StatelessWidget {
                   return RaisedButton(
                     child: Text('Submit'),
                     onPressed: () {
-                      print('submit');
-                      print(context);
-                      print(formController['id'].text);
-                      print(formController['pwd'].text);
-                      print(formController['pwd']);
+                      // print('submit');
+                      // print(context);
+                      // print(formController['id'].text);
+                      // print(formController['pwd'].text);
+                      // print(formController['pwd']);
                       if (formController['id'].text.isEmpty ||
                           formController['pwd'].text.isEmpty) {
                         Scaffold.of(context).showSnackBar(SnackBar(

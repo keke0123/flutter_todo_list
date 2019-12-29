@@ -12,81 +12,47 @@ class _MainPageState extends State<MainPage> {
   void initState() {
     print('init state');
     print(context);
-    _checkAuth();
-    super.initState();
-  }
-
-  _checkAuth() {
-    print('check auth');
-    // print(_data);
+    // widget 말고 다른곳에선 liten false 로 해줘야 되는거 같다.
     UserProvider _data = Provider.of<UserProvider>(context, listen: false);
     print(_data.user);
-    if (_data.user == null) {
-      print('navigator active');
-      // Navigator.of(context).pushReplacementNamed('/login');
-      print('?');
-      // Navigator.of(context).pushNamed('/login');
-    }
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     UserProvider _data = Provider.of<UserProvider>(context);
-    // UserProvider _data = Provider.of<UserProvider>(context, listen: true);
-    // UserProvider _data = Provider.of<UserProvider>(context);
-    // _data.user = {'id': 'test user', 'pwd': '123123'};
-    // if (_data.user == null) {
-    // print('data: ${_data.user}');
-    // Navigator.of(context).pushReplacementNamed('/login');
-    // Navigator.of(context).pushNamed('/login');
-    // }
-    //
-    // return Scaffold(
-    //     appBar: AppBar(
-    //         // title: _data.user != null
-    //         //     ? Text('${_data.user.id} page')
-    //         //     : Text('no user')
-    //         // //
-    //         title: (() {
-    //       if (_data.user != null) {
-    //         return Text('${_data.user.id} page');
-    //       } else {
-    //         return Text('no user');
-    //       }
-    //     }())),
-    //     body: Center(
-    //       child: FlatButton(
-    //           onPressed: () {
-    //             // Object _user = {'id': 'test user', 'pwd': '123123'};
-    //             _data.user = {'id': 'test user', 'pwd': '123123'};
-    //             // Navigator.of(context).pushNamed('/login');
-    //             Navigator.of(context).pushReplacementNamed('/login');
-    //           },
-    //           child: Text('click me!')),
-    //     ));
-    //
     return Scaffold(
         appBar: AppBar(
-            // title: _data.user != null
-            //     ? Text('${_data.user.id} page')
-            //     : Text('no user')
-            // //
-            title: (() {
-          if (_data.user != null) {
-            return Text('${_data.user.id} page');
-          } else {
-            return Text('no user');
-          }
-        }())),
-        body: Center(
-          child: FlatButton(
+          // title: _data.user != null
+          //     ? Text('${_data.user.id} page')
+          //     : Text('no user')
+          // //
+          title: (() {
+            if (_data.user != null) {
+              return Text('${_data.user.id} page');
+            } else {
+              return Text('no user');
+            }
+          }()),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.collections),
               onPressed: () {
-                // Object _user = {'id': 'test user', 'pwd': '123123'};
-                _data.user = {'id': 'test user', 'pwd': '123123'};
-                // Navigator.of(context).pushNamed('/login');
+                print('go to image page');
+                Navigator.of(context).pushNamed('/image');
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.close),
+              onPressed: () {
+                _data.user = {'id': null, 'pwd': null};
                 Navigator.of(context).pushReplacementNamed('/login');
               },
-              child: Text('click me!')),
+            ),
+          ],
+        ),
+        body: Column(
+          children: <Widget>[Container()],
         ));
   }
 }
