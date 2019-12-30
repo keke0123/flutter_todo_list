@@ -31,7 +31,7 @@ class _ImagePageState extends State<ImagePage> {
     // UserProvider _data = Provider.of(context);
     dynamic _imgs = Provider.of<List<Img>>(context);
     // print(_imgs);
-    // print(_imgs.length);
+    print(_imgs.length);
 
     return Scaffold(
         appBar: AppBar(
@@ -65,7 +65,25 @@ class _ImagePageState extends State<ImagePage> {
                   fetchData();
                 },
               );
-            })
+            }),
+            Builder(builder: (context) {
+              return RaisedButton(
+                child: Text('get image'),
+                onPressed: () {
+                  print('reload image list');
+                  // 이렇게 함수 보내면 다시 만들어 지나?
+                  ImgProvider().loadImgData(2);
+                },
+              );
+            }),
+            Container(
+                width: width,
+                child: ((() {
+                  if (_imgs.length > 0) {
+                    String total = _imgs.map((val) => val.url).toString();
+                    return Text(total);
+                  }
+                })()))
           ],
         ));
   }

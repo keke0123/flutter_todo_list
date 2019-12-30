@@ -15,7 +15,7 @@ class App extends StatelessWidget {
           builder: (_) => UserProvider(),
         ),
         FutureProvider(
-          builder: (_) => ImgProvider().loadImgData(),
+          builder: (_) => ImgProvider().loadImgData(1),
         )
       ],
       child: AppSub(),

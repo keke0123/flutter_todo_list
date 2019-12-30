@@ -6,9 +6,9 @@ import 'package:http/http.dart' as http;
 class ImgProvider {
   List<Img> imgs = new List();
 
-  Future<List<Img>> loadImgData() async {
+  Future<List<Img>> loadImgData(num) async {
     print('load img data');
-    var res = await loadAsset();
+    var res = await loadAsset(num);
     // print(res);
     print('response status code : ${res.statusCode}');
     if (res.statusCode == 200) {
@@ -21,8 +21,8 @@ class ImgProvider {
     return imgs;
   }
 
-  Future<http.Response> loadAsset() async {
+  Future<http.Response> loadAsset(num) async {
     print('load asset');
-    return await http.get('https://picsum.photos/v2/list');
+    return await http.get('https://picsum.photos/v2/list?page=${num}');
   }
 }
