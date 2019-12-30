@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_todo_list/providers/imgProvider.dart';
 import 'package:flutter_todo_list/providers/userProvider.dart';
 import 'package:flutter_todo_list/routes.dart';
 import 'package:provider/provider.dart';
@@ -12,6 +13,9 @@ class App extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           builder: (_) => UserProvider(),
+        ),
+        FutureProvider(
+          builder: (_) => ImgProvider().loadImgData(),
         )
       ],
       child: AppSub(),
