@@ -1,10 +1,16 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter_todo_list/models/image.dart';
 import 'package:http/http.dart' as http;
 
-class ImgProvider {
-  List<Img> imgs = new List();
+class ImgProvider extends ChangeNotifier {
+  List<Img> _imgs = new List();
+  List<Img> get imgs => _imgs;
+  // set imgs(dynamic list) {
+  //   _imgs = list;
+  //   notifyListeners();
+  // }
 
   Future<List<Img>> loadImgData(num) async {
     print('load img data');
@@ -14,11 +20,12 @@ class ImgProvider {
     if (res.statusCode == 200) {
       List<dynamic> jsonData = jsonDecode(res.body).toList();
       // print(jsonData[0]);
-      imgs = jsonData.map((val) => Img.fromJson(val)).toList();
+      _imgs = jsonData.map((val) => Img.fromJson(val)).toList();
     }
+    notifyListeners();
     // print(imgs);
     // imgs.add(new Img('test', 'test', 1, 2, 'test', 'test'));
-    return imgs;
+    return _imgs;
   }
 
   Future<http.Response> loadAsset(num) async {

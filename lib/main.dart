@@ -14,9 +14,12 @@ class App extends StatelessWidget {
         ChangeNotifierProvider(
           builder: (_) => UserProvider(),
         ),
-        FutureProvider(
-          builder: (_) => ImgProvider().loadImgData(1),
+        ChangeNotifierProvider(
+          builder: (_) => ImgProvider(),
         )
+        // FutureProvider(
+        //   builder: (_) => ImgProvider().loadImgData(1),
+        // )
       ],
       child: AppSub(),
     );
