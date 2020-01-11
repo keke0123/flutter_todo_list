@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_todo_list/layouts/colorPage.dart';
 import 'package:flutter_todo_list/layouts/loginPage.dart';
 import 'package:flutter_todo_list/layouts/mainPage.dart';
 import 'package:flutter_todo_list/layouts/ImagePage.dart';
@@ -23,6 +24,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => LoginPage());
       case '/image':
         return MaterialPageRoute(builder: (_) => ImagePage());
+      case '/color':
+        return MaterialPageRoute(builder: (_) => ColorPage());
     }
   }
 }

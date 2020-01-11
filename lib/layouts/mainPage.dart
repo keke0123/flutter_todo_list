@@ -43,6 +43,12 @@ class _MainPageState extends State<MainPage> {
               },
             ),
             IconButton(
+              icon: Icon(Icons.colorize),
+              onPressed: () {
+                Navigator.of(context).pushNamed('/color');
+              },
+            ),
+            IconButton(
               icon: Icon(Icons.close),
               onPressed: () {
                 _data.user = {'id': null, 'pwd': null};
